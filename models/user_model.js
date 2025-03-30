@@ -24,6 +24,9 @@ const UserSchema = new mongoose.Schema({
     region:{
         type: String,
     },
+    joinworldcup: {
+        type: Boolean
+    }
     
 })
 
