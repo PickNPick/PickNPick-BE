@@ -30,7 +30,7 @@ exports.get_userinfo = async(token)=>{
                 Authorization: `Bearer ${token}`,
             },
         });
-
+        console.log(userInfo)
         return userInfo.data.email;
 }
 
@@ -46,6 +46,7 @@ exports.sendtoken = async(email,res)=>{
                 mbti:"",
                 region:"",
                 discription:"",
+                joinworldcup:true
             })
             try {
                 await newuser.save();
@@ -58,5 +59,5 @@ exports.sendtoken = async(email,res)=>{
 
         const token = jwt.sign({ email: email }, "secret", { expiresIn: '1h' })
 
-        res.redirect(`${process.env.FRONT_URL}/oauth-success?token=${token}`);
+        res.redirect(`${process.env.FRONT_URL}/oauth-success?token=${token}&newmember=${ok.length}`);
 }
