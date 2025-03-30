@@ -1,0 +1,62 @@
+const axios = require('axios')
+const jwt = require('jsonwebtoken')
+const User = require('../models/user_model')
+
+exports.get_accesstoken = async (req) => {
+    try {
+        const code = req.query.code;
+        console.log(code)
+        const result = await axios.post("https://oauth2.googleapis.com/token", JSON.stringify({
+            client_id: process.env.GOOGLE_CLIENT_ID,
+            client_secret: process.env.GOOGLE_CLIENT_SECRET,
+            code: code,
+            redirect_uri: `${process.env.SERVER_URL}/googlelogin/callback`,
+            grant_type: "authorization_code"
+        }), {
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+        return result.data.access_token
+    }
+    catch (err) {
+        throw (err)
+    }
+}
+
+exports.get_userinfo = async(token)=>{
+        const userInfo = await axios.get('https://www.googleapis.com/oauth2/v2/userinfo', {
+            headers: {
+                Authorization: `Bearer ${token}`,
+            },
+        });
+
+        return userInfo.data.email;
+}
+
+exports.sendtoken = async(email,res)=>{
+    const ok = await User.find({ email: email })
+        console.log(ok.length)
+        if (ok.length === 0) {
+            const newuser = new User({
+                email: email,
+                name:"",
+                schoolid:"",
+                major:"",
+                mbti:"",
+                region:"",
+                discription:"",
+            })
+            try {
+                await newuser.save();
+                console.log("✅ 저장 완료");
+            }
+            catch (saveErr) {
+                console.error("❌ 저장 중 오류:", saveErr);
+            }
+        }
+
+        const token = jwt.sign({ email: email }, "secret", { expiresIn: '1h' })
+
+        res.redirect(`${process.env.FRONT_URL}/oauth-success?token=${token}`);
+}
