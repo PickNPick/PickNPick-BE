@@ -1,6 +1,7 @@
 const axios = require('axios')
 const jwt = require('jsonwebtoken')
 const User = require('../models/user_model')
+const Mailbox = require('../models/mailbox_model')
 
 exports.get_accesstoken = async (req) => {
     try {
@@ -50,6 +51,7 @@ exports.sendtoken = async(email,res)=>{
             })
             try {
                 await newuser.save();
+                await Mailbox.create({ mails: [],email:email });
                 console.log("✅ 저장 완료");
             }
             catch (saveErr) {
