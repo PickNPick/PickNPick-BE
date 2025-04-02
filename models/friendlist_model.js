@@ -5,8 +5,17 @@ const FriendlistSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
-    friendemail: {
-        type: [String],
+    friends: {
+        type: [{
+            email: {
+                type: String,
+                required: true
+            },
+            name: {
+                type: String,
+                required: true
+            }
+        }],
         default: []
     },
 })
