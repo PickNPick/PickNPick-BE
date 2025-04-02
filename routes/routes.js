@@ -6,22 +6,25 @@ const authMiddleware = require('../middleware/tokenverify')
 const updateinfo_controller = require('../controller/updateinfo.controller')
 const wantfriend_controller = require('../controller/wantfriend.controller')
 const getmailbox_controller = require('../controller/getmailbox.controller')
-
+const addfriend_controller = require('../controller/addfriend.controller')
 //구글로그인 API
-router.get('/googlelogin',googlelogin_controller.googlelogin)
-router.get('/googlelogin/callback',googlelogin_controller.googlelogin_callback)
+router.get('/googlelogin', googlelogin_controller.googlelogin)
+router.get('/googlelogin/callback', googlelogin_controller.googlelogin_callback)
 
 
 //회원정보 API
-router.get('/getinfo',authMiddleware,getinfo_controller.getinfo)
+router.get('/getinfo', authMiddleware, getinfo_controller.getinfo)
 
 //회원정보수정 API
-router.post('/updateinfo',authMiddleware,updateinfo_controller.updateinfo)
+router.post('/updateinfo', authMiddleware, updateinfo_controller.updateinfo)
 
 //추파보내기
-router.post('/wantfriend',authMiddleware,wantfriend_controller.wantfriend)
+router.post('/wantfriend', authMiddleware, wantfriend_controller.wantfriend)
 
 //추파함조회
-router.get('/getmailbox',authMiddleware,getmailbox_controller.getmailbox)
+router.get('/getmailbox', authMiddleware, getmailbox_controller.getmailbox)
+
+//친구추가
+router.post('/addfriend', authMiddleware, addfriend_controller.addfriend)
 
 module.exports = router
