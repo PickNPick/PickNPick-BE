@@ -13,13 +13,10 @@ router.get('/googlelogin/callback',googlelogin_controller.googlelogin_callback)
 
 
 //회원정보 API
-router.get('/getinfo',authMiddleware,getinfo_controller.getinfo)
+router.post('/getinfo',authMiddleware,getinfo_controller.getinfo)
 
 //회원정보수정 API
 router.post('/updateinfo',authMiddleware,updateinfo_controller.updateinfo)
-
-//추파보내기
-router.post('/wantfriend',authMiddleware,wantfriend_controller.wantfriend)
 
 //추파함조회
 router.get('/getmailbox',authMiddleware,getmailbox_controller.getmailbox)
