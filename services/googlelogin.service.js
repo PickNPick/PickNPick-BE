@@ -31,7 +31,7 @@ exports.get_userinfo = async(token)=>{
                 Authorization: `Bearer ${token}`,
             },
         });
-        console.log(userInfo)
+        console.log(`${userInfo.data.email}님 로그인`)
         return userInfo.data.email;
 }
 
@@ -61,5 +61,5 @@ exports.sendtoken = async(email,res)=>{
 
         const token = jwt.sign({ email: email }, "secret", { expiresIn: '1h' })
 
-        res.redirect(`${process.env.FRONT_URL}/oauth-success?token=${token}&newmember=${ok.length}`);
+        res.redirect(`${process.env.FRONT_URL}?token=${token}&newmember=${ok.length}`);
 }
