@@ -4,7 +4,6 @@ const googlelogin_controller = require('../controller/googlelogin.controller')
 const getinfo_controller = require('../controller/getinfo.controller')
 const authMiddleware = require('../middleware/tokenverify')
 const updateinfo_controller = require('../controller/updateinfo.controller')
-const wantfriend_controller = require('../controller/wantfriend.controller')
 const getmailbox_controller = require('../controller/getmailbox.controller')
 
 //구글로그인 API
