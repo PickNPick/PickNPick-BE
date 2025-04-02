@@ -14,7 +14,7 @@ router.get('/googlelogin/callback', googlelogin_controller.googlelogin_callback)
 //회원정보 API
 
 
-router.post('/getinfo',authMiddleware,getinfo_controller.getinfo)
+router.post('/getinfo', authMiddleware, getinfo_controller.getinfo)
 
 
 //회원정보수정 API
@@ -27,5 +27,8 @@ router.get('/getmailbox', authMiddleware, getmailbox_controller.getmailbox)
 
 //친구추가
 router.post('/addfriend', authMiddleware, addfriend_controller.addfriend)
+
+//친구목록조회
+router.post('/getfriendlist', authMiddleware, getfriendlist_controller.getfriendlist)
 
 module.exports = router
