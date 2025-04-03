@@ -9,6 +9,7 @@ const addfriend_controller = require('../controller/addfriend.controller')
 const uploadimg_controller = require('../controller/uploadimg.controller')
 const searchfriend_controller = require('../controller/searchfriend.controller')
 const getfriendreq_controller = require('../controller/getfriendreq.controller')
+const friendaccept_controller = require('../controller/friendaccept.controller')
 const multer = require('../middleware/multer')
 
 
@@ -41,6 +42,9 @@ router.post('/searchfriend', authMiddleware, searchfriend_controller.searchfrien
 
 //친구요청목록조회
 router.post('/getfriendreq', authMiddleware, getfriendreq_controller.getfriendreq)
+
+//친구요청수락
+router.post('/friendaccept', authMiddleware, friendaccept_controller.friendaccept)
 
 
 //이미지 업로드
