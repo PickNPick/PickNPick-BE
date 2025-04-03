@@ -8,6 +8,7 @@ const getmailbox_controller = require('../controller/getmailbox.controller')
 const addfriend_controller = require('../controller/addfriend.controller')
 const uploadimg_controller = require('../controller/uploadimg.controller')
 const multer = require('../middleware/multer')
+const getfriendlist_controller = require('../controller/getfriendlist.controller')
 
 
 
