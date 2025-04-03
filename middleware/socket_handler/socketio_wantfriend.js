@@ -16,6 +16,7 @@ module.exports = (socket, userSockets) => {
         mbti:datas.mbti,
         region:datas.region,
         discription:datas.discription,
+        profileImage:datas.profileImage
         });
 
         // 예: 누군가와 매칭 시도 로직
