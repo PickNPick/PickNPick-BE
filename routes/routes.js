@@ -10,6 +10,7 @@ const uploadimg_controller = require('../controller/uploadimg.controller')
 const searchfriend_controller = require('../controller/searchfriend.controller')
 const getfriendreq_controller = require('../controller/getfriendreq.controller')
 const multer = require('../middleware/multer')
+const getfriendlist_controller = require('../controller/getfriendlist.controller')
 
 
 

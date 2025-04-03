@@ -26,7 +26,10 @@ const UserSchema = new mongoose.Schema({
     },
     joinworldcup: {
         type: Boolean
-    }
+    },
+    profileImage:{
+        type: String,
+    },
     
 })
 

@@ -47,7 +47,8 @@ exports.sendtoken = async(email,res)=>{
                 mbti:"",
                 region:"",
                 discription:"",
-                joinworldcup:true
+                joinworldcup:true,
+                profileImage:"",
             })
             try {
                 await newuser.save();
