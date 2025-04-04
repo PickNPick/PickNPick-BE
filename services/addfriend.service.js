@@ -1,4 +1,5 @@
 const mongoose = require('mongoose')
+const FriendRequest = require('../models/friendrequest_model')
 const Friendlist = require('../models/friendlist_model')
 const User = require('../models/user_model')
 
@@ -18,36 +19,53 @@ exports.addfriend = async (req) => {
             return { success: false, message: "존재하지않는사용자" }
         }
 
-        // 현재 사용자의 친구 목록 확인
-        let friendlist = await Friendlist.findOne({ useremail: currentUserEmail })
+        // 이미 친구인지 확인
+        const existingFriendlist = await Friendlist.findOne({
+            useremail: currentUserEmail,
+            "friends.email": friendemail
+        })
 
-        // 이미 친구로 등록되어 있는지 확인
-        if (friendlist && friendlist.friends.some(friend => friend.email === friendemail)) {
+        if (existingFriendlist) {
             return { success: false, message: "이미친구" }
         }
 
-        const friendData = {
-            email: friendemail,
-            name: friendUser.name || friendUser.username || "사용자"
+        // 이미 친구 요청을 보냈는지 확인
+        const existingRequest = await FriendRequest.findOne({
+            recipientEmail: friendemail,
+            "requests.email": currentUserEmail
+        })
+
+        if (existingRequest) {
+            return { success: false, message: "이미요청됨" }
         }
 
-        if (friendlist) {
-            // 친구 목록이 있는 경우, 새 친구 추가
-            await Friendlist.updateOne(
-                { useremail: currentUserEmail },
-                { $addToSet: { friends: friendData } }
+        // 친구 요청 데이터 준비
+        const requestData = {
+            email: currentUserEmail,
+            name: req.user.name || req.user.username || "사용자",
+            createdAt: new Date()
+        }
+
+        // 친구 요청 목록 업데이트
+        let friendRequest = await FriendRequest.findOne({ recipientEmail: friendemail })
+
+        if (friendRequest) {
+            // 친구 요청 목록이 있는 경우, 새 요청 추가
+            await FriendRequest.updateOne(
+                { recipientEmail: friendemail },
+                { $push: { requests: requestData } }
             )
         } else {
-            // 친구 목록이 없는 경우, 새로운 문서 생성
-            friendlist = new Friendlist({
-                useremail: currentUserEmail,
-                friends: [friendData]
+            // 친구 요청 목록이 없는 경우, 새로운 문서 생성
+            friendRequest = new FriendRequest({
+                recipientEmail: friendemail,
+                requests: [requestData]
             })
-            await friendlist.save()
+            await friendRequest.save()
         }
 
-        return { success: true, message: "친구 추가 완료" }
+        return { success: true, message: "친구 요청 완료" }
     } catch (err) {
-        return { success: false, message: `친구 추가 실패: ${err.message}` }
+        return { success: false, message: `친구 요청 실패: ${err.message}` }
     }
 }
