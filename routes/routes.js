@@ -13,7 +13,6 @@ const friendaccept_controller = require('../controller/friendaccept.controller')
 const multer = require('../middleware/multer')
 const getfriendlist_controller = require('../controller/getfriendlist.controller');
 const getmyinfo_controller = require('../controller/getmyinfo.controller');
-const getfriendlist_controller = require('../controller/getfriendlist.controller')
 const getworldcup_controller = require('../controller/getworldcup.controller')
 
 
