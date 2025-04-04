@@ -11,6 +11,8 @@ const searchfriend_controller = require('../controller/searchfriend.controller')
 const getfriendreq_controller = require('../controller/getfriendreq.controller')
 const friendaccept_controller = require('../controller/friendaccept.controller')
 const multer = require('../middleware/multer')
+const getfriendlist_controller = require('../controller/getfriendlist.controller');
+const getmyinfo_controller = require('../controller/getmyinfo.controller');
 const getfriendlist_controller = require('../controller/getfriendlist.controller')
 const getworldcup_controller = require('../controller/getworldcup.controller')
 
@@ -22,6 +24,9 @@ router.get('/googlelogin/callback', googlelogin_controller.googlelogin_callback)
 
 //회원정보 API
 router.post('/getinfo', authMiddleware, getinfo_controller.getinfo)
+
+//내정보 API
+router.get('/getmyinfo',authMiddleware, getmyinfo_controller.getmyinfo)
 
 
 //회원정보수정 API
