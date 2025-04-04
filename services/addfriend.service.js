@@ -1,5 +1,5 @@
 const mongoose = require('mongoose')
-const FriendRequest = require('../models/friendrequest_model')
+const FriendRequest = require('../models/friendreq_model')
 const Friendlist = require('../models/friendlist_model')
 const User = require('../models/user_model')
 
