@@ -12,7 +12,7 @@ const getfriendreq_controller = require('../controller/getfriendreq.controller')
 const friendaccept_controller = require('../controller/friendaccept.controller')
 const multer = require('../middleware/multer')
 const getfriendlist_controller = require('../controller/getfriendlist.controller')
-
+const getworldcup_controller = require('../controller/getworldcup.controller')
 
 
 //구글로그인 API
@@ -46,6 +46,9 @@ router.post('/getfriendreq', authMiddleware, getfriendreq_controller.getfriendre
 
 //친구요청수락
 router.post('/friendaccept', authMiddleware, friendaccept_controller.friendaccept)
+
+//월드컵 참가 인원 무작위 뽑기  
+router.post('/getworldcup', authMiddleware, getworldcup_controller.getRandomWorldcupUsers)
 
 
 //이미지 업로드
