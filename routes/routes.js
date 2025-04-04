@@ -8,7 +8,8 @@ const getmailbox_controller = require('../controller/getmailbox.controller')
 const addfriend_controller = require('../controller/addfriend.controller')
 const uploadimg_controller = require('../controller/uploadimg.controller')
 const multer = require('../middleware/multer')
-const getfriendlist_controller = require('../controller/getfriendlist.controller')
+const getfriendlist_controller = require('../controller/getfriendlist.controller');
+const getmyinfo_controller = require('../controller/getmyinfo.controller');
 
 
 
@@ -19,6 +20,9 @@ router.get('/googlelogin/callback', googlelogin_controller.googlelogin_callback)
 
 //회원정보 API
 router.post('/getinfo', authMiddleware, getinfo_controller.getinfo)
+
+//내정보 API
+router.get('/getmyinfo',authMiddleware, getmyinfo_controller.getmyinfo)
 
 
 //회원정보수정 API
