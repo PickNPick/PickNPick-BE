@@ -2,6 +2,18 @@ const mongoose = require('mongoose');
 const User = require('./models/user_model');
 
 
+async function deleteAllUsers() {
+    try {
+        // 모든 User 데이터 삭제
+        const result = await User.deleteMany({});
+        console.log(`총 ${result.deletedCount}명의 사용자가 성공적으로 삭제되었습니다.`);
+        return result;
+    } catch (err) {
+        console.error('사용자 데이터 삭제 중 오류 발생:', err.message);
+        throw err;
+    }
+}
+
 async function insertUsers() {
     try {
         // 같은 키 자료를 한 배열에 담기
@@ -123,13 +135,15 @@ async function insertUsers() {
             true, true, true, true, true, true, true, true, true, true
         ];
 
-        const profileImages = [
-            "", "", "", "", "", "", "", "", "", "",
-            "", "", "", "", "", "", "", "", "", "",
-            "", "", "", "", "", "", "", "", "", "",
-            "", "", "", "", "", "", "", "", "", "",
-            "", "", "", "", "", "", "", "", "", ""
-        ];
+        const profileImages = Array(50).fill("https://firebasestorage.googleapis.com/v0/b/picknpick-3932d.firebasestorage.app/o/profileImages%2Fkimseung0630%40khu.ac.kr_a03ead04-add5-4df9-bfbb-dcf5623f438e?alt=media");
+
+        // const profileImages = [
+        //     "", "", "", "", "", "", "", "", "", "",
+        //     "", "", "", "", "", "", "", "", "", "",
+        //     "", "", "", "", "", "", "", "", "", "",
+        //     "", "", "", "", "", "", "", "", "", "",
+        //     "", "", "", "", "", "", "", "", "", ""
+        // ];
 
         const shortdescription = [
             "코딩이랑 게임 좋아하는 컴공생이에요.",
@@ -219,6 +233,8 @@ async function insertUsers() {
 }
 
 exports.insertUsers = insertUsers;
+exports.deleteAllUsers = deleteAllUsers;
+
 
 //require 후 실행 코드
 insertUsers()
