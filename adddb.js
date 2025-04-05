@@ -61,7 +61,7 @@ async function insertUsers() {
             "ENTP", "ISTJ", "INTP", "ESTP", "ENFJ", "ENFP", "INTJ"
         ];
 
-        const description = [
+        const discription = [
             "코딩이랑 여행을 진짜 좋아해서 방학마다 배낭 메고 어디론가 떠나는 게 꿈이에요. 최근엔 파이썬으로 간단한 게임도 만들어 봤는데, 코드를 짜면서 느끼는 성취감이 정말 최고예요. 나중엔 소프트웨어 개발자로 일하면서 전 세계를 돌아다니고 싶습니다.",
             "빅데이터 분석이랑 마케팅 전략 짜는 게 재밌어서 매일 관련 논문 읽고 있어요. 학교 프로젝트로 가상의 스타트업 마케팅 플랜도 만들어 봤는데, 데이터로 사람들 반응을 예측하는 게 너무 신기했어요. 졸업하면 데이터 기반 전략 컨설턴트가 되고 싶어요.",
             "사람들 심리를 파악하고 그들의 행동을 분석하는 게 좋아요. 최근엔 심리학 수업에서 배운 걸 토대로 친구들 MBTI 맞춰보는 게임도 했는데, 다들 신기해하더라고요. 앞으로 심리 상담사로 사람들 마음을 돕고 싶다는 꿈이 있습니다.",
@@ -145,7 +145,7 @@ async function insertUsers() {
         //     "", "", "", "", "", "", "", "", "", ""
         // ];
 
-        const shortdescription = [
+        const shortdiscription = [
             "코딩이랑 게임 좋아하는 컴공생이에요.",
             "데이터 분석에 푹 빠진 경영학과 대학생이에요.",
             "사람 마음 읽는 심리학과 캠퍼스 탐정이에요.",
@@ -210,11 +210,11 @@ async function insertUsers() {
                 schoolid: schoolids[i],
                 major: majors[i],
                 mbti: mbtis[i],
-                description: description[i],
+                discription: discription[i],
                 region: regions[i],
                 joinworldcup: joinworldcups[i],
                 profileImage: profileImages[i],
-                shortdescription: shortdescription[i]
+                shortdiscription: shortdiscription[i]
             });
         }
 

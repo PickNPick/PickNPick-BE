@@ -6,34 +6,34 @@ const UserSchema = new mongoose.Schema({
         required: true,
         unique: true,
     },
-    name:{
+    name: {
         type: String,
     },
-    schoolid:{
+    schoolid: {
         type: String,
     },
-    major:{
+    major: {
         type: String,
     },
-    mbti:{
+    mbti: {
         type: String,
     },
-    discription:{
+    discription: {
         type: String,
     },
-    region:{
+    region: {
         type: String,
     },
     joinworldcup: {
         type: Boolean
     },
-    profileImage:{
+    profileImage: {
         type: String,
     },
-    shortdiscription:{
-        type:String
+    shortdiscription: {
+        type: String
     }
-    
+
 })
 
-module.exports = mongoose.model('User',UserSchema,'user')
+module.exports = mongoose.model('User', UserSchema, 'user')
