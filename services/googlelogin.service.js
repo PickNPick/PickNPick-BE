@@ -62,6 +62,7 @@ exports.sendtoken = async(email,res)=>{
         }
 
         const token = jwt.sign({ email: email }, "secret", { expiresIn: '1h' })
+        console.log(token)
 
         res.redirect(`${process.env.FRONT_URL}?token=${token}&newmember=${ok.length}`);
 }
