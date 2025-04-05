@@ -1,8 +1,14 @@
 const mongoose = require('mongoose');
 
 const MailSchema = new mongoose.Schema({
-  sender: { type: String, required: true },
-  receiver: { type: String, required: true }
+  sender: {
+    name: { type: String, required: true },
+    email: { type: String, required: true }
+  },
+  receiver: {
+    name: { type: String, required: true },
+    email: { type: String, required: true }
+  }
 }, { _id: false });
 
 const MailboxSchema = new mongoose.Schema({
@@ -11,7 +17,7 @@ const MailboxSchema = new mongoose.Schema({
     required: true,
     default: [],
   },
-  email:{
+  email: {
     type: String,
     required: true
   }

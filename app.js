@@ -4,6 +4,10 @@ const dotenv = require('dotenv');
 const connectDB = require('./db/mongodb');
 const socketio = require('./middleware/socketio');
 const routes = require('./routes/routes');
+const { addChatData } = require('./addchatroom');
+
+
+
 
 const { createServer } = require('http');
 const { Server } = require('socket.io');
@@ -30,5 +34,6 @@ const io = new Server(server, {
 socketio(io);
 
 server.listen(3000, () => {
+  addChatData();
   console.log('서버시작');
 });
