@@ -7,6 +7,6 @@ exports.getRandomWorldcupUsers = async (req, res) => {
         res.status(200).json(result)
     }
     catch (err) {
-        res.send(err)
+        res.status(500).json({ error: err.message });
     }
 }

@@ -16,6 +16,6 @@ exports.getRandomWorldcupUsers = async (req) => {
 
         return randomUsers;
     } catch (err) {
-        throw new Error(err.message);
+        throw new Error(err);
     }
 };
