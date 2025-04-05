@@ -5,8 +5,11 @@ const Friendlist = require('../models/friendlist_model')
 
 exports.getfriendlist = async (req) => {
     try {
-        const datas = await Friendlist.find({ useremail: req.body.useremail });
-        
+
+        const datas = await Friendlist.find({ useremail: req.user.email });
+
+
+
         return datas
     }
     catch (err) {
