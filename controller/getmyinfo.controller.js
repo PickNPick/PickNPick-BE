@@ -4,7 +4,8 @@ exports.getmyinfo = async (req, res) => {
     try{
         console.log(`${req.user.email}님께서 getmyinfo 요청`)
         const result = await getmyinfo_service.getmyinfo(req);
-        res.status(200).json(result)
+        console.log(result[0])
+        res.status(200).json(result[0])
     }
     catch(err){
         res.send(err)
