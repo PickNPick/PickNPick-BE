@@ -40,7 +40,7 @@ router.get('/getmailbox', authMiddleware, getmailbox_controller.getmailbox)
 router.post('/addfriend', authMiddleware, addfriend_controller.addfriend)
 
 //친구목록조회
-router.post('/getfriendlist', authMiddleware, getfriendlist_controller.getfriendlist)
+router.get('/getfriendlist', authMiddleware, getfriendlist_controller.getfriendlist)
 
 //친구검색
 router.post('/searchfriend', authMiddleware, searchfriend_controller.searchfriend)
@@ -52,7 +52,7 @@ router.post('/getfriendreq', authMiddleware, getfriendreq_controller.getfriendre
 router.post('/friendaccept', authMiddleware, friendaccept_controller.friendaccept)
 
 //월드컵 참가 인원 무작위 뽑기  
-router.post('/getworldcup', authMiddleware, getworldcup_controller.getRandomWorldcupUsers)
+router.get('/getworldcup', authMiddleware, getworldcup_controller.getRandomWorldcupUsers)
 
 
 //이미지 업로드
