@@ -201,28 +201,28 @@ module.exports = (socket, userSockets) => {
 //프론트 요청
 
 
-// For accepting friend request
-socket.emit("acceptFriend", {
-    receiveremail: yourEmail,
-    senderemail: requestSenderEmail,
-    sender: requestSender,
-    receiver: yourUsername
-});
+// // For accepting friend request
+// socket.emit("acceptFriend", {
+//     receiveremail: yourEmail,
+//     senderemail: requestSenderEmail,
+//     sender: requestSender,
+//     receiver: yourUsername
+// });
 
-// For rejecting friend request
-socket.emit("rejectFriend", {
-    receiveremail: yourEmail,
-    senderemail: requestSenderEmail,
-    sender: requestSender,
-    receiver: yourUsername
-});
+// // For rejecting friend request
+// socket.emit("rejectFriend", {
+//     receiveremail: yourEmail,
+//     senderemail: requestSenderEmail,
+//     sender: requestSender,
+//     receiver: yourUsername
+// });
 
-// Listen for updates
-socket.on("friendRequestAccepted", (data) => {
-    // Add data.email to your friends list in UI
-    // Show notification
-});
+// // Listen for updates
+// socket.on("friendRequestAccepted", (data) => {
+//     // Add data.email to your friends list in UI
+//     // Show notification
+// });
 
-socket.on("friendRequestRejected", (data) => {
-    // Remove request from UI
-});
+// socket.on("friendRequestRejected", (data) => {
+//     // Remove request from UI
+// });
