@@ -6,6 +6,29 @@ const Friendlist = require('../../models/friendlist_model');
 module.exports = (socket, userSockets) => {
     // 기존 친구 요청 이벤트
     socket.on("wantfriend", async (data) => {
+
+        console.log(data)
+        const mailbox = await Mailbox.findOne({ email: data.receiveremail })
+        console.log(mailbox)
+        mailbox.mails.push({ sender: data.sender, receiver: data.receiver });
+        console.log(mailbox)
+        // await mailbox.save();
+        const address = userSockets.get(data.receiveremail)
+        const datas = await User.findOne({ email: data.senderemail })
+        socket.to(address).emit("wantfriend", {
+            sender: data.sender,
+            receiver: data.receiver,
+            schoolid: datas.schoolid,
+            major: datas.major,
+            mbti: datas.mbti,
+            region: datas.region,
+            discription: datas.discription,
+            profileImage: datas.profileImage
+        });
+
+        // 예: 누군가와 매칭 시도 로직
+        // userSockets 등을 사용해서 특정 사용자에게 메시지 보내는 것도 가능
+
         try {
             // 수신자의 메일함 찾기
             let mailbox = await Mailbox.findOne({ email: data.receiveremail });
@@ -55,6 +78,7 @@ module.exports = (socket, userSockets) => {
             console.error("친구 요청 전송 중 오류 발생:", error);
             socket.emit("error", { message: "친구 요청 전송에 실패했습니다" });
         }
+
     });
 
     // 친구 요청 수락 이벤트
