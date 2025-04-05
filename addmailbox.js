@@ -1,7 +1,6 @@
 const mongoose = require('mongoose');
 const Mailbox = require('./models/mailbox_model'); // 모델 경로를 적절히 수정하세요
 
-
 // 이수현님에게 온 친구 요청 데이터 추가 함수
 async function addFriendRequestsToSuhyun() {
     try {
@@ -11,24 +10,54 @@ async function addFriendRequestsToSuhyun() {
         // 친구 요청 데이터 (sender만 다르고 receiver는 모두 이수현)
         const friendRequests = [
             {
-                sender: '김민준',
-                receiver: '이수현'
+                sender: {
+                    name: '김민준',
+                    email: 'minjun@khu.ac.kr'
+                },
+                receiver: {
+                    name: '이수현',
+                    email: '2suhyni@khu.ac.kr'
+                }
             },
             {
-                sender: '박지훈',
-                receiver: '이수현'
+                sender: {
+                    name: '박지훈',
+                    email: 'jihoon@khu.ac.kr'
+                },
+                receiver: {
+                    name: '이수현',
+                    email: '2suhyni@khu.ac.kr'
+                }
             },
             {
-                sender: '신예은',
-                receiver: '이수현'
+                sender: {
+                    name: '신예은',
+                    email: 'yeeun@khu.ac.kr'
+                },
+                receiver: {
+                    name: '이수현',
+                    email: '2suhyni@khu.ac.kr'
+                }
             },
             {
-                sender: '도규리',
-                receiver: '이수현'
+                sender: {
+                    name: '도규리',
+                    email: 'gyuri@khu.ac.kr'
+                },
+                receiver: {
+                    name: '이수현',
+                    email: '2suhyni@khu.ac.kr'
+                }
             },
             {
-                sender: '여동건',
-                receiver: '이수현'
+                sender: {
+                    name: '여동건',
+                    email: 'donggun@khu.ac.kr'
+                },
+                receiver: {
+                    name: '이수현',
+                    email: '2suhyni@khu.ac.kr'
+                }
             }
         ];
 
@@ -62,17 +91,25 @@ async function addFriendRequestsToSuhyun() {
     }
 }
 
+async function deleteAllMailbox() {
+    try {
+        await Mailbox.deleteMany({});
+        console.log('모든 메일박스가 삭제되었습니다.');
+    }
+    catch (error) {
+        console.error('모든 메일박스 삭제 중 오류 발생:', error);
+        throw error;
+    }
+}
 
 exports.addFriendRequestsToSuhyun = addFriendRequestsToSuhyun;
-
+exports.deleteAllMailbox = deleteAllMailbox;
 
 // 함수 실행
 addFriendRequestsToSuhyun()
     .then(result => {
         console.log('작업 완료!');
-
     })
     .catch(err => {
         console.error('최종 오류:', err);
-
     });
