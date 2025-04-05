@@ -49,6 +49,7 @@ exports.sendtoken = async(email,res)=>{
                 discription:"",
                 joinworldcup:true,
                 profileImage:"",
+                shortdiscription:"",
             })
             try {
                 await newuser.save();
