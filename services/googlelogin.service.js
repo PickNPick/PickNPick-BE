@@ -48,7 +48,7 @@ exports.sendtoken = async(email,res)=>{
                 region:"",
                 discription:"",
                 joinworldcup:true,
-                profileImage:"",
+                profileImage:"https://firebasestorage.googleapis.com/v0/b/picknpick-3932d.firebasestorage.app/o/profileImages%2Fkimseung0630%40khu.ac.kr_a03ead04-add5-4df9-bfbb-dcf5623f438e?alt=media",
                 shortdiscription:"",
             })
             try {
