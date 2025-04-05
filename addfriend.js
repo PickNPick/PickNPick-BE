@@ -5,7 +5,7 @@ const Friendlist = require('./models/friendlist_model');
 async function addKimseungFriendlist() {
     try {
         // 김승님의 이메일
-        const kimseungEmail = 'kimseung0630@khu.ac.kr';
+        const kimseungEmail = 'personchicken0804@gmail.com';
 
         // 김승님의 친구 목록 데이터
         const friendlistData = {
@@ -57,4 +57,4 @@ async function addKimseungFriendlist() {
 
 
 // 함수 내보내기
-exports.addkimseungfriendlist = addKimseungFriendlist;
+exports.addKimseungFriendlist = addKimseungFriendlist;

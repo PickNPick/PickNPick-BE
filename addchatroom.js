@@ -3,7 +3,7 @@ const Chat = require('./models/chat_model'); // 모델 경로를 적절히 수�
 // 채팅방 데이터만 DB에 추가
 async function addChatData() {
     // 사용자 정보
-    const kimseungEmail = 'kimseung0630@khu.ac.kr';
+    const kimseungEmail = 'personchicken0804@gmail.com';
     const minjunEmail = 'minjun@khu.ac.kr';
     const yeeunEmail = 'yeeun@khu.ac.kr';
 
