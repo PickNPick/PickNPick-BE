@@ -25,7 +25,7 @@ router.get('/googlelogin/callback', googlelogin_controller.googlelogin_callback)
 router.post('/getinfo', authMiddleware, getinfo_controller.getinfo)
 
 //내정보 API
-router.get('/getmyinfo',authMiddleware, getmyinfo_controller.getmyinfo)
+router.get('/getmyinfo', authMiddleware, getmyinfo_controller.getmyinfo)
 
 
 //회원정보수정 API
@@ -52,7 +52,7 @@ router.post('/getfriendreq', authMiddleware, getfriendreq_controller.getfriendre
 router.post('/friendaccept', authMiddleware, friendaccept_controller.friendaccept)
 
 //월드컵 참가 인원 무작위 뽑기  
-router.get('/getworldcup', authMiddleware, getworldcup_controller.getRandomWorldcupUsers)
+router.post('/getworldcup', authMiddleware, getworldcup_controller.getRandomWorldcupUsers)
 
 
 //이미지 업로드
