@@ -3,11 +3,14 @@ const Mailbox = require('../../models/mailbox_model')
 
 module.exports = (socket, userSockets) => {
     socket.on("wantfriend", async (data) => {
+        console.log(data)
         const mailbox = await Mailbox.findOne({ email: data.receiveremail })
+        console.log(mailbox)
         mailbox.mails.push({ sender: data.sender, receiver: data.receiver });
-        await mailbox.save();
+        console.log(mailbox)
+        // await mailbox.save();
         const address = userSockets.get(data.receiveremail)
-        const datas = await User.find({ email: data.senderemail })
+        const datas = await User.findOne({ email: data.senderemail })
         socket.to(address).emit("wantfriend", {
             sender: data.sender,
             receiver: data.receiver,
