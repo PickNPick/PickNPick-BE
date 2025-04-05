@@ -11,10 +11,12 @@ const MailboxSchema = new mongoose.Schema({
     required: true,
     default: [],
   },
-  email:{
+  email: {
     type: String,
     required: true
   }
 });
 
 module.exports = mongoose.model('Mailbox', MailboxSchema, 'mailbox');
+
+
