@@ -14,7 +14,8 @@ exports.updateinfo = async (req,res) =>{
                 discription: datas.discription,
                 region:datas.region,
                 mbti:datas.mbti,
-                joinworldcup:datas.joinworldcup
+                joinworldcup:datas.joinworldcup,
+                shortdiscription:datas.shortdiscription
               }
             }
           )
